@@ -1,9 +1,10 @@
 # aspnet-mvc-todolist
 
 - Stores TodoItems which contain {Id, Name, IsComplete}
-- Main Page displays all TodoItems + allows user to add new TodoItems
+- Main Page displays all TodoItems 
+- User can add new TodoItems via modal
 - CRUD Operations on TodoItems
-- Connects to SQL database to read and update data
+- Connects to SQL database to read and update Todo List data
 
 # run
 
