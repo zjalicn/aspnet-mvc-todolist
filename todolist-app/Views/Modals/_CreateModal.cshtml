@@ -1,0 +1,49 @@
+﻿@model TodoItem;
+@using System.Web;
+
+@{
+    ViewData["Title"] = "Create New Todo";
+}
+
+<style>
+    .form {
+        margin: 0 20px;
+    }
+    .form-group.create-modal {
+        margin: 10px;
+    }
+    .modal-content {
+        padding: 20px;
+    }
+</style>
+
+<div class="modal" id="CreateModal" tabindex="-1" role="dialog">  
+    <div class="modal-dialog modal-lg">  
+        <div class="modal-content">  
+            <form asp-action="Create" asp-controller="TodoItems">
+                <div class="form-group">
+                    <h2 class="modal-title"><strong>Create New Todo</strong></h2>  
+                    <hr/>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group create-modal">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" required/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group create-modal" style="float:right">
+                    <button class="btn btn-danger" onclick="$('#CreateModal').modal('hide')">  
+                        <i class="fa fa-2xs fa-x"></i>
+                        Discard
+                    </button>
+
+                    <button class="btn btn-primary" type="submit">  
+                        <i class="fa fa-2xs fa-plus"></i>
+                        Create
+                    </button>
+
+                </div>
+            </form>
+        </div>  
+    </div>  
+</div>

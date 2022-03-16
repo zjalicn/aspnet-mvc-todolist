@@ -1,0 +1,55 @@
+﻿@model IEnumerable<TodoItem>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+.card-body{
+    display: flex;
+}
+
+
+.card-title {
+    flex: 1;
+    margin: 5px
+}
+
+.card-buttons {
+    margin: 5px;
+    float: right;
+}
+
+</style>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="margin: 10px 40px; box-shadow: 4px 2px 4px #888888;">
+            <div class="card-body">
+                <h2 class="card-title">
+                    @if ((bool)item.IsComplete){
+                        <i class="fa fa-2xs fa-check"></i>
+                    } 
+                    else
+                    {
+                        <i class="fa fa-2xs fa-circle"></i>
+                    }
+                    @item.Name
+                </h2>
+                
+                <div class="card-buttons">
+                    <button class="btn btn-secondary" onclick="location.href='@Url.Action("Edit","TodoItems", new { id=item.Id })'">
+                        <i class="fa fa-pen-to-square"></i>
+                        Edit
+                    </button>
+                    <button class="btn btn-danger" onclick="location.href='@Url.Action("Delete","TodoItems", new { id=item.Id })'">
+                        <i class="fa fa-eraser"></i>
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+        

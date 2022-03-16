@@ -1,0 +1,44 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/todolist_app.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/fontawesome-free-6.0.0-web/css/all.css"/>
+    <script src="~/lib/fontawesome-free-6.0.0-web/js/all.js"></script>
+</head>
+<body>
+    <div class="page">
+        <!-- TOP HEADER -->
+        <nav class="navbar navbar-light bg-light" style="box-shadow: 1px 1px 4px #888888">
+            <h1 style="margin: 10px 20px">
+                <a asp-action="Index" asp-controller="Home" style="text-decoration:none; color: black">
+                    <i class="fa fa-list-check"></i>
+                    <strong>To Do List</strong>
+                </a>
+            </h1>
+
+            <button class="btn btn-primary" style="margin: 10px 40px" onclick="$('#CreateModal').modal('show')">
+                <i class="fa fa-pencil"></i>
+                Add New Task
+            </button>
+            
+        </nav>
+        <main role="main">
+        <!-- MAIN CONTAINER -->
+        @RenderBody()
+        </main>
+    </div>
+
+    @Html.Partial("../Modals/_CreateModal.cshtml", new TodoItem());
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
